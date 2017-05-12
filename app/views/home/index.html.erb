@@ -1,0 +1,51 @@
+</br>
+</br>
+</br>
+
+
+<div style=' font-size: 22px;'>
+<%= will_paginate @ad %>
+</div>
+
+
+
+
+
+
+<div style='' class="container" >
+
+	<%@ad.each_with_index do |i,b|%>
+
+		<%if b==0 or b % 3 == 0 %>
+		<div style='  '  class="row">
+		<%end%>	
+
+			<div  class="col col-md-4">
+
+<div style='  background-color: white; border: 1px solid ; border-color: #e6e6e6; height: 350px; width: 350px;  padding:15px;  border-radius: 9px;' >
+				<h2><%= i.zagolovok%></h2>
+				
+
+				<div style="padding-left: 30%;"><%= image_tag i.img1.url (:thumb)  %></div> 
+				
+						<div   style='width: 80%;    word-wrap: break-word;'>
+							<%= i.tekst[0..150] %>...
+							</br>
+							<%=link_to 'Читать всё' , ad_path(i), class: 'btn btn-small'%> 
+						</div>
+				
+				Опубликовал: <% @model=Model.find(i.model_id) %><%=@model.email%>
+				</div>
+
+				</div>
+
+				<%if b==2 or b==5 or b==8 or b==11 or b==14 or b==17 or b==20 or b==23 or b==26 or b==29 %>
+			</div>
+			<br>
+				<%end%>	
+
+		
+		<%end%>
+		
+	
+</div>

@@ -1,0 +1,14 @@
+
+
+<%=simple_form_for @ad,url: article_path(@article), html: { class: "form-group"}, method: :put  do  |f|%>
+<%= f.input :section_id,:collection=>Section.all ,:label_method=>:body,value_method: :id,label: false, placeholder: 'Раздел' %>
+<%=f.input placeholder: 'Заголовок', :zagolovok, label: false%>
+<%=f.input :tekst, placeholder: 'Текст',label: false%>
+ <%=f.input :img1, as: :file, label: 'Фото 1'%>
+ <%=f.input :img2, as: :file, label: 'Фото 2'%>
+ <%=f.input :img3, as: :file, label: 'Фото 3'%>
+<%=f.button :submit, 'Создать' %>
+
+<%end%>
+
+</div>

@@ -1,0 +1,24 @@
+
+<div class="container" style="padding: 40px;">
+<%= image_tag @ad.img1.url (:medium)  %>
+<%= image_tag @ad.img2.url (:medium)  %>
+<%= image_tag @ad.img3.url (:medium)  %>
+
+</br>
+</br>
+</br>
+
+<h1><%= @ad.zagolovok%></h1>
+</br>
+<%= @ad.tekst %>
+<%if current_model != nil%>
+<%if current_model.id==@ad.model_id%>
+<%= link_to content_tag('span','',class: 'fa fa-pencil'),edit_ad_path(@ad),class: 'action' %>
+<%= link_to  content_tag('span','',class: 'fa fa-trash'),@ad, method: :delete ,class: 'action' %>
+<%end%>
+<%end%>
+</div>
+
+
+
+

@@ -1,0 +1,121 @@
+<!DOCTYPE html >
+<html  >
+  <head>
+    <title>Descshop</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+
+
+  <body style= 'background-image: url();background-color: #f7f7f7' >
+
+
+<div class='container-fluid' style=' color: white; font-size: 22px; position: fixed; top: 0; width: 100% ; height: 35px; background-color: #ff294d; opacity: 0.8; z-index: 999;'>
+
+
+<%= link_to "Домашняя страница", root_path%>
+
+
+
+
+<% if model_signed_in? %>
+<%= link_to "Новая статья", new_ad_path, class: 'btn btn-primary'%>
+<%= link_to "новый раздел", new_section_path, class: 'btn btn-primary'%>
+<span>Здравствуйте, <%= current_model.email %></span>
+<%= link_to ' | Выйти', destroy_model_session_path, :method => :delete %>
+<% else %>
+<%= link_to '| Войти', new_model_session_path %> или <%= link_to 'Зарегистрироваться', 
+new_model_registration_path %>
+<% end %>
+</div>
+
+
+
+
+<div style='padding-left: 10%';>
+
+<%=yield %>
+
+</div>
+    
+
+
+
+
+
+
+ <img     style='position: fixed; bottom: 0;padding-left: 80.2%;padding-bottom: 32px;'  " src="http://res.cloudinary.com/dyyelpyii/image/upload/v1492068886/
+sova1_tz72yv.png"   > 
+</br>
+<img id='sova'  style='position: fixed; bottom: 0;padding-left: 80.2%;    '  " src="http://res.cloudinary.com/dyyelpyii/image/upload/v1492068886/sova3_yq2ytt.png"   > 
+</br>
+<img   style='position: fixed; bottom: 0;padding-left: 80.1%;padding-bottom: 2px; '  " src="http://res.cloudinary.com/dyyelpyii/image/upload/v1492068886/sovaw_s6iu1z.png"   > 
+
+
+
+
+
+
+
+<div style="background-color:#dcdcdc; position: fixed; top:35px; height: 100%;  width: 10%; word-wrap: break-word;  " >
+  
+<div style="padding: 15px;">
+<%Section.all.each do |i|%>
+<a href=/sections/<%=i.id%> > <%=i.body%><a>
+</br>
+<hr>
+<%end%>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</body>
+
+
+<script type='text/javascript' >
+
+
+
+var sova = document.getElementById('sova'),
+sovaH=19,
+Velocity=0.03,
+limit=20;
+
+function update() {
+ sova.style.paddingBottom = sovaH + 'px';}
+
+ function gogo()	{ 
+	sovaH+=Velocity;
+    if (sovaH >= limit|| sovaH <= 19) Velocity = -Velocity;
+}
+
+
+function mainLoop() {
+	gogo();
+	update();
+   requestAnimationFrame(mainLoop);
+}    
+    
+
+requestAnimationFrame(mainLoop);
+  
+
+</script>
+
+
+</html>
+
